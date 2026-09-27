@@ -1,0 +1,39 @@
+{
+  "name": "Homedex",
+  "id": "homedex",
+  "available": true,
+  "short_desc": "Read-only inventory of the services, hosts, ports and routes in your homelab.",
+  "author": "Harsh Shah",
+  "port": 7377,
+  "categories": ["network", "utilities"],
+  "description": "Homedex records the services, hosts, ports, routes, certificates, domains and changes it discovers from Docker, Proxmox VE, Tailscale and reverse proxies, and never starts, stops or reconfigures anything. It reads Docker only through a bundled socket proxy that rejects every write.",
+  "tipi_version": 1,
+  "version": "0.2.3",
+  "source": "https://github.com/HarshShah0203/homedex",
+  "website": "https://github.com/HarshShah0203/homedex",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["arm64", "amd64"],
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "Admin password",
+      "hint": "12 or more characters. Set on the first start so nobody else can claim Homedex through its setup page. Homedex stores only its Argon2id hash and ignores this value once an admin exists.",
+      "required": true,
+      "min": 12,
+      "max": 128,
+      "env_variable": "HOMEDEX_ADMIN_PASSWORD"
+    },
+    {
+      "type": "boolean",
+      "label": "HTTPS only (secure session cookie)",
+      "hint": "Turn on only if you always open Homedex through an HTTPS domain. Sign-in over plain HTTP stops working when it is on.",
+      "default": false,
+      "required": false,
+      "env_variable": "HOMEDEX_SECURE_COOKIES"
+    }
+  ],
+  "created_at": 1790467200000,
+  "updated_at": 1790506679243,
+  "min_tipi_version": "4.7.0"
+}
